@@ -1,5 +1,10 @@
 # keycloack-mysql
 
+username: ```admin```
+password: ```admin```
+normal user of SudaCoin realm:
+username: ```user1```
+password: ```password```
 enable SSL
 
 root@emulator1:~/keycloack-mysql# ```docker exec -it keycloak2 bash```
