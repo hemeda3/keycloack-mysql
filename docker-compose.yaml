@@ -1,0 +1,29 @@
+version: '3.2'
+services:
+  mysql:
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: keycloak
+      MYSQL_PASSWORD: password
+      MYSQL_USER: keycloak
+      MYSQL_ROOT_PASSWORD: root_password
+    image: mysql
+  keycloak2:
+    container_name: keycloak2
+    environment:
+      DEBUG: "true"
+      DEBUG_PORT: "*:8787"
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /opt/data1/realm-export-v3.json
+      KEYCLOAK_USER: admin
+      ROOT_LOGLEVEL: DEBUG
+#      JAVA_OPTS_APPEND: "-Dkeycloak.migration.action=import -Dkeycloak.migration.dir=/opt/data1/export -Dkeycloak.migration.provider=dir "
+    image: jboss/keycloak
+    ports:
+      - 8080:8080
+      - 8443:8443
+      - 8787:8787
+      - 9990:9990
+    volumes:
+      - ${PWD}/tmp:/opt/data1
+      - ${PWD}/deployments:/opt/jboss/keycloak/standalone/deployments/
