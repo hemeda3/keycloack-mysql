@@ -15,6 +15,7 @@ root@emulator1:~/keycloack-mysql# ```docker exec -it keycloak2 bash```
 * bash-4.4$ ```./kcadm.sh update realms/SudaCoinRealm -s sslRequired=NONE```
 
 
+```yaml
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -129,3 +130,6 @@ spec:
         - name: "keycloak-mapledoum-click"
           secret:
             secretName: "keycloak.mapledoum.click"
+            
+            
+  ```
